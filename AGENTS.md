@@ -10,3 +10,6 @@ This is Luciano Pinilla's independent portfolio, separate from the Fomo Campus s
 - Preserve .openai/hosting.json project_id. Use Sites skills for hosting.
 - Keep THREE_PARTY source provenance in THIRD_PARTY.md accurate; menu is a visual adaptation because full original source is access-limited.
 - Use meaningful commits for completed work. Do not change the separate Fomo project when editing this portfolio.
+
+- Fomo copy: interning at Fomo handling campus outreach, onboarding fraternities into Greek Wars, and building brand awareness.
+- Dock has no visible outer border. Contact window links only to @foezart; GitHub appears in the activity window.

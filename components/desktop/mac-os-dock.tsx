@@ -223,7 +223,7 @@ const MacOSDock: React.FC<MacOSDockProps> = ({
         width: `${contentWidth + padding * 2}px`,
         background: 'rgba(233, 244, 250, 0.25)',
         borderRadius: `${Math.max(12, baseIconSize * 0.4)}px`,
-        border: '1px solid rgba(255, 255, 255, 0.58)'
+        border: 'none'
         ,backdropFilter: 'blur(28px) saturate(160%)', WebkitBackdropFilter: 'blur(28px) saturate(160%)',
         boxShadow: `
           0 ${Math.max(4, baseIconSize * 0.1)}px ${Math.max(16, baseIconSize * 0.4)}px rgba(0, 0, 0, 0.4),
