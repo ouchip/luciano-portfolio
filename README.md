@@ -1,6 +1,6 @@
 # Luciano Pinilla — personal portfolio
 
-A personal desktop with Fomo Campus work, real GitHub contributions, and contact through [@foezart](https://x.com/foezart).
+A personal desktop with Fomo Campus work, real GitHub contributions, and contact through [@foezart](https://x.com/foezart) or luchi@lucianopinilla.com. The email UI does not provision an inbox; receiving service must be configured separately.
 
 ## Development
 

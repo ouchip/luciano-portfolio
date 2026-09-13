@@ -5,3 +5,5 @@
 - Menu visual reference: https://21st.dev/@dhmnpunit/components/mac-os-menu-bar. Full source access was unavailable after the daily free-view limit. Menu is implemented using the scaffold's accessible Base UI/Shadcn primitives, not represented as the original component source.
 - Fomo village preview: from the user's Fomo Campus project, based on Milo Messina's original Greek village scene.
 - Coastal wallpaper: generated with OpenAI imagegen for this portfolio.
+
+- GitHub mark: Simple Icons, https://github.com/simple-icons/simple-icons/blob/develop/icons/github.svg (CC0 collection). Fomo eyes from the existing user-owned Fomo project. App icon backgrounds are simple UI containers around those marks.

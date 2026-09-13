@@ -2,7 +2,7 @@
 
 This is Luciano Pinilla's independent portfolio, separate from the Fomo Campus site.
 - GitHub: ouchip/luciano-portfolio. Author: Luciano Pinilla <65198014+ouchip@users.noreply.github.com>.
-- Social contact: https://x.com/foezart. No email supplied.
+- Social contact: https://x.com/foezart. User-selected contact email: luchi@lucianopinilla.com, displayed with copy and mailto actions. No receiving inbox or forwarding service has been provisioned or verified.
 - Fonts: Plus Jakarta Sans and Geist only.
 - Approved wallpaper: painted coastal scene at public/images/coast.jpg.
 - Keep name unobstructed, Mac-like top menu and glass dock, no About window, no "Building in public" label.
@@ -13,3 +13,8 @@ This is Luciano Pinilla's independent portfolio, separate from the Fomo Campus s
 
 - Fomo copy: interning at Fomo handling campus outreach, onboarding fraternities into Greek Wars, and building brand awareness.
 - Dock has no visible outer border. Contact window links only to @foezart; GitHub appears in the activity window.
+- Window chrome must be compact (46px toolbar) and match content in both system light and dark modes via prefers-color-scheme. Never dark header over white body. Top menu app name remains Luciano Pinilla.
+- Whole page must not scroll. Use one viewport; allow scrolling only inside a window when needed. On mobile only the focused window is shown and dock switches windows.
+- Clock reflects visitor's local date/time and updates every second, including seconds.
+
+- Use Fomo eyes for Fomo work branding and real GitHub mark for activity; local assets in public/icons.
