@@ -18,6 +18,7 @@ export function upstreamUrl(requestUrl:string){
   return upstream;
 }
 export async function campusResponse(request:Request,fetcher:typeof fetch=fetch){
+  if(!['GET','HEAD'].includes(request.method))return new Response('Method not allowed',{status:405,headers:{Allow:'GET, HEAD'}});
   const url=new URL(request.url);
   if(url.pathname==='/campus')return Response.redirect(url.origin+'/campus/'+url.search,308);
   const target=upstreamUrl(request.url),headers=new Headers();

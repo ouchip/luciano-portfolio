@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Geist, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 
@@ -11,6 +11,8 @@ const jakarta = Plus_Jakarta_Sans({
   variable: '--font-jakarta',
   subsets: ['latin'],
 });
+
+export const viewport: Viewport = {width:'device-width',initialScale:1,viewportFit:'cover'};
 
 export const metadata: Metadata = {
   title: 'Luciano Pinilla — Selected work',

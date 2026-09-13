@@ -22,3 +22,5 @@ test('clean page URLs preserve relative assets and the live API path',async()=>{
   assert((await r.text()).includes('<base href="https://lucianopinilla.com'+base+'">'));
  }
 });
+
+test('campus proxy rejects writes before making an upstream request',async()=>{let fetched=false;const response=await campusResponse(new Request('https://lucianopinilla.com/campus/api/campuswars',{method:'POST'}),async()=>{fetched=true;return new Response('unexpected')});assert.equal(response.status,405);assert.equal(fetched,false)});
