@@ -19,4 +19,6 @@ This is Luciano Pinilla's independent portfolio, separate from the Fomo Campus s
 
 - Use Fomo eyes for Fomo work branding and real GitHub mark for activity; local assets in public/icons.
 
-- Selected work title is GTM at Fomo. User confirms LinkedIn entry should be GTM, Full-time, September 2026–present; campus outreach, fraternity onboarding, brand awareness.
+- Selected work title is GTM Internship at Fomo. LinkedIn is GTM, Internship, September 2026–present; campus outreach, fraternity onboarding, brand awareness. Headline: GTM Internship at fomo.
+- User explicitly approved making portfolio public at lucianopinilla.com, with maintained Fomo site under /campus. /mail remains private behind its own login.
+- Contact window follows compact Mail composition: To email with copy, subject, message, X logo and LinkedIn signature.
