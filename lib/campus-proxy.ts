@@ -12,6 +12,8 @@ export function rewriteCampusText(text:string,publicOrigin:string){
 export function upstreamUrl(requestUrl:string){
   const request=new URL(requestUrl),upstream=new URL(CAMPUS_ORIGIN);
   upstream.pathname=request.pathname.replace(/^\/campus(?=\/|$)/,'')||'/';
+  if(upstream.pathname.startsWith('/api/'))upstream.pathname=upstream.pathname.replace(/\/$/,'');
+  if(/^\/campus-wars(?:\.html)?\/?$/.test(upstream.pathname))upstream.pathname='/campus-wars.html';
   upstream.search=request.search;
   return upstream;
 }
@@ -20,7 +22,8 @@ export async function campusResponse(request:Request,fetcher:typeof fetch=fetch)
   if(url.pathname==='/campus')return Response.redirect(url.origin+'/campus/'+url.search,308);
   const target=upstreamUrl(request.url),headers=new Headers();
   for(const key of ['Accept','Range','If-None-Match','If-Modified-Since']){const value=request.headers.get(key);if(value)headers.set(key,value)}
-  const result=await fetcher(target,{method:request.method,headers,redirect:'manual'});
+  let result=await fetcher(target,{method:request.method,headers,redirect:'manual'});
+  if(target.pathname==='/campus-wars.html'&&result.status>=300&&result.status<400){const redirected=new URL(result.headers.get('Location')||'',target);if(redirected.origin===CAMPUS_ORIGIN)result=await fetcher(redirected,{method:request.method,headers,redirect:'manual'})}
   const responseHeaders=new Headers();
   for(const key of ['Content-Type','Cache-Control','ETag','Last-Modified','Content-Range','Accept-Ranges']){const value=result.headers.get(key);if(value)responseHeaders.set(key,value)}
   responseHeaders.set('X-Content-Type-Options','nosniff');
@@ -29,6 +32,16 @@ export async function campusResponse(request:Request,fetcher:typeof fetch=fetch)
   const type=result.headers.get('Content-Type')||'';
   const rewrite=/text\/html|text\/css|(?:application|text)\/javascript/.test(type)&&result.status===200;
   if(request.method==='HEAD'||[204,304].includes(result.status))return new Response(null,{status:result.status,headers:responseHeaders});
-  if(rewrite){responseHeaders.delete('ETag');return new Response(rewriteCampusText(await result.text(),url.origin),{status:result.status,headers:responseHeaders})}
+  if(rewrite){
+    responseHeaders.delete('ETag');
+    let text=rewriteCampusText(await result.text(),url.origin);
+    if(type.includes('text/html')){
+      // Clean URLs must retain the source document's directory for relative assets.
+      const directory=target.pathname.slice(0,target.pathname.lastIndexOf('/')+1);
+      const base=url.origin+'/campus'+directory;
+      if(!/<base\b/i.test(text))text=text.replace(/<head(?:\s[^>]*)?>/i,match=>match+'<base href="'+base+'">');
+    }
+    return new Response(text,{status:result.status,headers:responseHeaders});
+  }
   return new Response(result.body,{status:result.status,headers:responseHeaders});
 }

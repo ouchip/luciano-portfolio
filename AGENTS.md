@@ -2,11 +2,11 @@
 
 This is Luciano Pinilla's independent portfolio, separate from the Fomo Campus site.
 - GitHub: ouchip/luciano-portfolio. Author: Luciano Pinilla <65198014+ouchip@users.noreply.github.com>.
-- Social contact: https://x.com/foezart. User-selected contact email: luchi@lucianopinilla.com, displayed with copy and mailto actions. No receiving inbox or forwarding service has been provisioned or verified.
+- Social contact: https://x.com/foezart. User-selected contact email: luchi@lucianopinilla.com, displayed with copy and mailto actions. Private Cloudflare mailbox is deployed at mail.lucianopinilla.com; see ignored HANDOFF.md for verification status.
 - Fonts: Plus Jakarta Sans and Geist only.
 - Approved wallpaper: painted coastal scene at public/images/coast.jpg.
 - Keep name unobstructed, Mac-like top menu and glass dock, no About window, no "Building in public" label.
-- Real GitHub data only. No fake or backdated commits, statistics, or calendar cells.
+- Real GitHub data only; calendar is noninteractive with no day-hover popups. No fake or backdated commits, statistics, or calendar cells.
 - Preserve .openai/hosting.json project_id. Use Sites skills for hosting.
 - Keep THREE_PARTY source provenance in THIRD_PARTY.md accurate; menu is a visual adaptation because full original source is access-limited.
 - Use meaningful commits for completed work. Do not change the separate Fomo project when editing this portfolio.
@@ -22,3 +22,6 @@ This is Luciano Pinilla's independent portfolio, separate from the Fomo Campus s
 - Selected work title is GTM Internship at Fomo. LinkedIn is GTM, Internship, September 2026–present; campus outreach, fraternity onboarding, brand awareness. Headline: GTM Internship at fomo.
 - User explicitly approved making portfolio public at lucianopinilla.com, with maintained Fomo site under /campus. /mail remains private behind its own login.
 - Contact window follows compact Mail composition: To email with copy, subject, message, X logo and LinkedIn signature.
+
+- Desktop windows drag by their title bars and stay within screen bounds; mobile remains one focused window with dock switching.
+- Mail accents use iMessage blue, and contact signature includes official X and LinkedIn marks.

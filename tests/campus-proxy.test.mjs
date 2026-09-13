@@ -14,3 +14,11 @@ test('the campus proxy never forwards portfolio cookies or credentials',async()=
   let seen;const response=await campusResponse(new Request('https://lucianopinilla.com/campus/assets/hero.mp4',{headers:{Cookie:'private=secret',Authorization:'Bearer secret',Range:'bytes=0-10'}}),async(url,init)=>{seen={url,init};return new Response('media',{status:206,headers:{'Content-Type':'video/mp4','Content-Range':'bytes 0-4/5','Set-Cookie':'upstream=secret'}})});
   assert.equal(seen.init.headers.get('Cookie'),null);assert.equal(seen.init.headers.get('Authorization'),null);assert.equal(seen.init.headers.get('Range'),'bytes=0-10');assert.equal(response.headers.get('Set-Cookie'),null);assert.equal(response.status,206);assert.equal(await response.text(),'media');
 });
+
+test('clean page URLs preserve relative assets and the live API path',async()=>{
+ assert.equal(upstreamUrl('https://lucianopinilla.com/campus/api/campuswars/').pathname,'/api/campuswars');
+ for(const [path,base] of [['/campus/','/campus/'],['/campus/campus-wars/','/campus/'],['/campus/internship/','/campus/internship/']]){
+  const r=await campusResponse(new Request('https://lucianopinilla.com'+path),async()=>new Response('<html><head></head><body><img src="assets/logo.svg"></body></html>',{headers:{'Content-Type':'text/html'}}));
+  assert((await r.text()).includes('<base href="https://lucianopinilla.com'+base+'">'));
+ }
+});
