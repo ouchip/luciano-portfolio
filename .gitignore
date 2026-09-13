@@ -41,3 +41,6 @@ next-env.d.ts
 
 # Local operational handoff
 /HANDOFF.md
+
+# Independently versioned private mailbox.
+/mail-service/
