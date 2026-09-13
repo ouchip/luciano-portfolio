@@ -178,3 +178,16 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}.desktop{height:1
 @media(min-width:800px){.window:not(.expanded)>.titlebar{cursor:grab;touch-action:none;user-select:none}.window:not(.expanded)>.titlebar:active{cursor:grabbing}.titlebar:focus-visible{outline:2px solid #007aff;outline-offset:-3px}}@media(max-width:799px){.window{transform:none!important}}
 
 @media(max-width:799px){.topbar{height:calc(36px + env(safe-area-inset-top));padding-top:env(safe-area-inset-top)}.menu-status{min-width:0;flex:1}.desktop-clock{margin-left:auto}.window-contact .email-row input{font-size:16px}.workspace{padding-bottom:calc(94px + max(14px,env(safe-area-inset-bottom)))}}
+
+/* The preferred 90% desktop view is the default; mobile keeps its touch sizing. */
+@media(min-width:800px){
+  .desktop{zoom:.9;height:calc(100dvh / .9)}
+  .workspace{height:calc(100dvh / .9 - 32px)}
+  .desktop-heading{left:max(calc(5vw / .9),calc((100vw / .9 - 1350px) / 2))}
+  .desktop-heading h1{font-size:clamp(65px,calc(7vw / .9),106px)}
+}
+@media(min-width:800px) and (max-height:740px){.desktop-heading h1{font-size:clamp(54px,calc(10vh / .9),76px)}}
+@media(min-width:800px) and (max-height:560px){.desktop-heading h1{font-size:48px}}
+@media(min-width:800px) and (max-width:1100px){.desktop-heading{left:3%}}
+
+@media(max-width:799px){.desktop-heading{bottom:auto}}
