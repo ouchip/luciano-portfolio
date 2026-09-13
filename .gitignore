@@ -38,3 +38,6 @@ next-env.d.ts
 /work/
 
 *.tsbuildinfo
+
+# Local operational handoff
+/HANDOFF.md
