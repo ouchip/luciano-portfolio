@@ -1,6 +1,6 @@
 # Luciano Pinilla — personal portfolio
 
-A personal desktop with Fomo Campus work, an About note, real GitHub contributions, and contact through [@foezart](https://x.com/foezart).
+A personal desktop with Fomo Campus work, real GitHub contributions, and contact through [@foezart](https://x.com/foezart).
 
 ## Development
 
@@ -20,3 +20,7 @@ The Mac-style windows close, minimize, expand, and reopen from the dock or menu.
 ## Publishing
 
 This project has its own Sites publication and is separate from the Fomo Campus website. The hosting manifest contains only non-secret project configuration. Keep credentials out of source. Make meaningful commits with an email associated with your GitHub account; activity attribution is controlled by GitHub.
+
+## Visual direction
+
+Only Plus Jakarta Sans and Geist. A painted coastal wallpaper, compact Mac-style menu, and translucent dock. Keep the lower-left name area clear of all windows. There is no About window or “Building in public” label.

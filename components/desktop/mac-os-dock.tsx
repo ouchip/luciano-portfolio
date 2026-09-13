@@ -43,7 +43,7 @@ const MacOSDock: React.FC<MacOSDockProps> = ({
     if (smallerDimension < 480) {
       // Mobile phones
       return {
-        baseIconSize: Math.max(40, smallerDimension * 0.08),
+        baseIconSize: 48,
         maxScale: 1.4,
         effectWidth: smallerDimension * 0.4
       };
@@ -64,7 +64,7 @@ const MacOSDock: React.FC<MacOSDockProps> = ({
     } else {
       // Desktop and large screens
       return {
-        baseIconSize: Math.max(64, Math.min(80, smallerDimension * 0.05)),
+        baseIconSize: 60,
         maxScale: 1.8,
         effectWidth: 300
       };
@@ -74,7 +74,7 @@ const MacOSDock: React.FC<MacOSDockProps> = ({
   const [config, setConfig] = useState({baseIconSize:64,maxScale:1.6,effectWidth:240});
   const { baseIconSize, maxScale, effectWidth } = config;
   const minScale = 1.0;
-  const baseSpacing = Math.max(4, baseIconSize * 0.08);
+  const baseSpacing = 14;
 
   // Update config on window resize
   useEffect(() => {
@@ -182,7 +182,7 @@ const MacOSDock: React.FC<MacOSDockProps> = ({
     
     if (dockRef.current) {
       const rect = dockRef.current.getBoundingClientRect();
-      const padding = Math.max(8, baseIconSize * 0.12);
+      const padding = 14;
       setMouseX(e.clientX - rect.left - padding);
     }
   }, [baseIconSize]);
@@ -213,7 +213,7 @@ const MacOSDock: React.FC<MacOSDockProps> = ({
       ))
     : (apps.length * (baseIconSize + baseSpacing)) - baseSpacing;
 
-  const padding = Math.max(8, baseIconSize * 0.12);
+  const padding = 14;
 
     return (
     <div 
@@ -221,9 +221,10 @@ const MacOSDock: React.FC<MacOSDockProps> = ({
       className={`backdrop-blur-md ${className}`}
       style={{
         width: `${contentWidth + padding * 2}px`,
-        background: 'rgba(45, 45, 45, 0.75)',
+        background: 'rgba(233, 244, 250, 0.25)',
         borderRadius: `${Math.max(12, baseIconSize * 0.4)}px`,
-        border: '1px solid rgba(255, 255, 255, 0.15)',
+        border: '1px solid rgba(255, 255, 255, 0.58)'
+        ,backdropFilter: 'blur(28px) saturate(160%)', WebkitBackdropFilter: 'blur(28px) saturate(160%)',
         boxShadow: `
           0 ${Math.max(4, baseIconSize * 0.1)}px ${Math.max(16, baseIconSize * 0.4)}px rgba(0, 0, 0, 0.4),
           0 ${Math.max(2, baseIconSize * 0.05)}px ${Math.max(8, baseIconSize * 0.2)}px rgba(0, 0, 0, 0.3),
@@ -288,7 +289,7 @@ const MacOSDock: React.FC<MacOSDockProps> = ({
                     width: `${Math.max(3, baseIconSize * 0.06)}px`,
                     height: `${Math.max(3, baseIconSize * 0.06)}px`,
                     borderRadius: '50%',
-                    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                    backgroundColor: 'rgba(25, 49, 62, 0.8)',
                     boxShadow: '0 0 4px rgba(0, 0, 0, 0.3)',
                   }}
                 />
