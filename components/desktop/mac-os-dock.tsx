@@ -26,7 +26,7 @@ const MacOSDock: React.FC<MacOSDockProps> = ({
   const [currentScales, setCurrentScales] = useState<number[]>(apps.map(() => 1));
   const [currentPositions, setCurrentPositions] = useState<number[]>([]);
   const dockRef = useRef<HTMLDivElement>(null);
-  const iconRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const iconRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const animationFrameRef = useRef<number | undefined>(undefined);
   const lastMouseMoveTime = useRef<number>(0);
 
@@ -71,7 +71,7 @@ const MacOSDock: React.FC<MacOSDockProps> = ({
     }
   }, []);
 
-  const [config, setConfig] = useState(getResponsiveConfig);
+  const [config, setConfig] = useState({baseIconSize:64,maxScale:1.6,effectWidth:240});
   const { baseIconSize, maxScale, effectWidth } = config;
   const minScale = 1.0;
   const baseSpacing = Math.max(4, baseIconSize * 0.08);
@@ -82,6 +82,7 @@ const MacOSDock: React.FC<MacOSDockProps> = ({
       setConfig(getResponsiveConfig());
     };
 
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, [getResponsiveConfig]);
@@ -131,10 +132,13 @@ const MacOSDock: React.FC<MacOSDockProps> = ({
 
   // Animation loop
   const animateToTarget = useCallback(() => {
-    const targetScales = calculateTargetMagnification(mouseX);
+    const targetScales = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? apps.map(()=>1) : calculateTargetMagnification(mouseX);
     const targetPositions = calculatePositions(targetScales);
     const lerpFactor = mouseX !== null ? 0.2 : 0.12;
 
+    const scalesNeedUpdate = currentScales.some((scale,index)=>Math.abs(scale-targetScales[index])>0.002);
+    const positionsNeedUpdate = currentPositions.some((pos,index)=>Math.abs(pos-targetPositions[index])>0.1);
+    if(!scalesNeedUpdate && !positionsNeedUpdate)return;
     setCurrentScales(prevScales => {
       return prevScales.map((currentScale, index) => {
         const diff = targetScales[index] - currentScale;
@@ -149,16 +153,7 @@ const MacOSDock: React.FC<MacOSDockProps> = ({
       });
     });
 
-    const scalesNeedUpdate = currentScales.some((scale, index) => 
-      Math.abs(scale - targetScales[index]) > 0.002
-    );
-    const positionsNeedUpdate = currentPositions.some((pos, index) => 
-      Math.abs(pos - targetPositions[index]) > 0.1
-    );
-    
-    if (scalesNeedUpdate || positionsNeedUpdate || mouseX !== null) {
-      animationFrameRef.current = requestAnimationFrame(animateToTarget);
-    }
+
   }, [mouseX, calculateTargetMagnification, calculatePositions, currentScales, currentPositions]);
 
   // Start/stop animation loop
@@ -207,25 +202,8 @@ const MacOSDock: React.FC<MacOSDockProps> = ({
   };
 
   const handleAppClick = (appId: string, index: number) => {
-    if (iconRefs.current[index]) {
-      if (typeof window !== 'undefined' && (window as any).gsap) {
-        const gsap = (window as any).gsap;
-        const bounceHeight = currentScales[index] > 1.3 ? -baseIconSize * 0.2 : -baseIconSize * 0.15;
-        
-        gsap.to(iconRefs.current[index], {
-          y: bounceHeight,
-          duration: 0.2,
-          ease: 'power2.out',
-          yoyo: true,
-          repeat: 1,
-          transformOrigin: 'bottom center'
-        });
-      } else {
-        createBounceAnimation(iconRefs.current[index]!);
-      }
-    }
-    
-    onAppClick(appId);
+    if (iconRefs.current[index] && !window.matchMedia('(prefers-reduced-motion: reduce)').matches)createBounceAnimation(iconRefs.current[index]!);
+        onAppClick(appId);
   };
 
   // Calculate content width
@@ -254,7 +232,7 @@ const MacOSDock: React.FC<MacOSDockProps> = ({
         `,
         padding: `${padding}px`
       }}
-      onMouseMove={handleMouseMove}
+      onMouseMove={e=>{if(window.matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)').matches)handleMouseMove(e)}}
       onMouseLeave={handleMouseLeave}
     >
       <div 
@@ -266,11 +244,14 @@ const MacOSDock: React.FC<MacOSDockProps> = ({
       >
         {apps.map((app, index) => {
           const scale = currentScales[index];
-          const position = currentPositions[index] || 0;
+          const position = currentPositions[index] ?? (index * (baseIconSize + baseSpacing) + baseIconSize/2);
           const scaledSize = baseIconSize * scale;
           
           return (
-            <div
+            <button
+              type="button"
+              aria-label={app.name}
+              aria-pressed={openApps.includes(app.id)}
               key={app.id}
               ref={(el) => { iconRefs.current[index] = el; }}
               className="absolute cursor-pointer flex flex-col items-center justify-end"
@@ -312,7 +293,7 @@ const MacOSDock: React.FC<MacOSDockProps> = ({
                   }}
                 />
               )}
-            </div>
+            </button>
           );
         })}
       </div>
