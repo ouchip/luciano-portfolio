@@ -12,9 +12,11 @@ This is Luciano Pinilla's independent portfolio, separate from the Fomo Campus s
 - Use meaningful commits for completed work. Do not change the separate Fomo project when editing this portfolio.
 
 - Fomo copy: interning at Fomo handling campus outreach, onboarding fraternities into Greek Wars, and building brand awareness.
-- Dock has no visible outer border. Contact window links only to @foezart; GitHub appears in the activity window.
+- Dock has no visible outer border. Contact window includes @foezart, LinkedIn (https://www.linkedin.com/in/luciano-pinilla-134668381/), and the email copy control. Use the X logo. GitHub appears in the activity window.
 - Window chrome must be compact (46px toolbar) and match content in both system light and dark modes via prefers-color-scheme. Never dark header over white body. Top menu app name remains Luciano Pinilla.
 - Whole page must not scroll. Use one viewport; allow scrolling only inside a window when needed. On mobile only the focused window is shown and dock switches windows.
 - Clock reflects visitor's local date/time and updates every second, including seconds.
 
 - Use Fomo eyes for Fomo work branding and real GitHub mark for activity; local assets in public/icons.
+
+- Selected work title is GTM at Fomo. User confirms LinkedIn entry should be GTM, Full-time, September 2026–present; campus outreach, fraternity onboarding, brand awareness.

@@ -7,3 +7,5 @@
 - Coastal wallpaper: generated with OpenAI imagegen for this portfolio.
 
 - GitHub mark: Simple Icons, https://github.com/simple-icons/simple-icons/blob/develop/icons/github.svg (CC0 collection). Fomo eyes from the existing user-owned Fomo project. App icon backgrounds are simple UI containers around those marks.
+
+- X and LinkedIn marks: Simple Icons; X from the current collection, LinkedIn from release 13.21.0 (CC0). Marks identify links to the user’s own profiles.
