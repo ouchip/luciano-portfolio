@@ -1,1 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#244d60"/><text x="12" y="44" font-family="Geist,Arial,sans-serif" font-size="39" font-weight="bold" letter-spacing="-3" fill="#fff">lp.</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Luciano Pinilla LP monogram">
+  <title>Luciano Pinilla — dropped P monogram</title>
+  <rect width="512" height="512" rx="112" fill="#244d60"/>
+  <g class="mark" fill="#ffffff" transform="translate(39.1176 341.2079) scale(0.375034 -0.375034)">
+    <path d="M79.999 710H210.002V113.202H546.601V0H79.999Z"/>
+    <path transform="translate(456.602 -255.599)" d="M79.999 710H354.6Q436.601 710 496.501 682.9Q556.401 655.8 588.201 604.7Q620.001 553.599 620.001 483.799Q620.001 413.399 588.201 361.899Q556.401 310.399 496.501 282.999Q436.601 255.599 354.6 255.599H210.002V0H79.999ZM485.999 483.799Q485.999 539.199 450.699 567.998Q415.399 596.798 348.6 596.798H210.002V368.801H348.6Q415.399 368.801 450.699 398.0Q485.999 427.2 485.999 483.799Z"/>
+  </g>
+</svg>

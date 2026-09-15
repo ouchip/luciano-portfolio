@@ -9,3 +9,5 @@
 - GitHub mark: Simple Icons, https://github.com/simple-icons/simple-icons/blob/develop/icons/github.svg (CC0 collection). Fomo eyes from the existing user-owned Fomo project. App icon backgrounds are simple UI containers around those marks.
 
 - X and LinkedIn marks: Simple Icons; X from the current collection, LinkedIn from release 13.21.0 (CC0). Marks identify links to the user’s own profiles.
+
+- LP favicon: user-approved custom monogram using outlined Geist SemiBold letterforms (Geist by Vercel / Basement Studio, SIL Open Font License). The P is lowered to join the L's baseline; SVG contains vector paths with no embedded font.

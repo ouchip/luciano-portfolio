@@ -16,7 +16,13 @@ export const viewport: Viewport = {width:'device-width',initialScale:1,viewportF
 
 export const metadata: Metadata = {
   title: 'Luciano Pinilla — Selected work',
-  icons: {icon:'/favicon.svg'},
+  icons: {
+    icon: [
+      { url: '/favicon.svg?v=lp-1', type: 'image/svg+xml' },
+      { url: '/favicon.ico?v=lp-1', sizes: 'any' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png?v=lp-1', sizes: '180x180' }],
+  },
   description: 'A personal desktop of selected work and GitHub activity. Fomo Campus, GitHub, and @foezart.',
 };
 
